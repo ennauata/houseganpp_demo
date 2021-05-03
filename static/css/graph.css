@@ -1,0 +1,600 @@
+body {
+	background-color: #lightgray;
+	vertical-align: middle;
+	width: 1440px;
+}
+
+#title {
+	margin-top: 4px;
+}
+#container_screen {
+	display: flex;
+	vertical-align: middle;
+	width: 1440px;
+}
+
+#mynetwork {
+	position: relative;
+	width: 768px;
+	height: 700px;
+	border: 0px solid lightgray;
+	background-color: #ffffff;
+	box-shadow: 1px 2px 1px 2px #888888;
+	margin: 4px 4px 4px 4px;
+}
+
+#display {
+	position: relative;
+	width: 768px;
+	height: 700px;
+	border: 0px solid lightgray;
+	background-color: #ffffff;
+	box-shadow: 1px 2px 1px 2px #888888;
+	margin: 4px 4px 4px 4px;
+}
+
+#lgContainer svg {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+#menu{
+	float:left;
+}
+
+
+#logos {
+	float:right;
+}
+
+#title {
+	float:right;
+}
+#mini_display {
+	position: relative;
+	width: 128px;
+	height: 700px;
+	border: 2px solid lightgray;
+	background-color: #ffffff;
+	box-shadow: 1px 2px 1px 2px #888888;
+	margin: 4px 4px 4px 4px;
+}
+
+.smdisplay:hover {
+	border-style: solid;
+	background-color: #ddd;
+	border-width: thin;
+}
+
+/*#smdisplay:hover {
+	background-color: none;
+	border-width: none;
+}*/
+
+table.legend_table {
+	font-size: 11px;
+	border-width: 1px;
+	border-color: #d3d3d3;
+	border-style: solid;
+}
+
+table.legend_table,
+td {
+	border-width: 1px;
+	border-color: #d3d3d3;
+	border-style: solid;
+	padding: 2px;
+}
+
+div.table_content {
+	width: 80px;
+	text-align: center;
+}
+
+div.table_description {
+	width: 100px;
+}
+
+#operation {
+	font-size: 28px;
+}
+
+#node-popUp {
+	display: none;
+	position: absolute;
+	top: 350px;
+	left: 170px;
+	z-index: 299;
+	width: 250px;
+	height: 120px;
+	background-color: #f9f9f9;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #5394ed;
+	padding: 10px;
+	text-align: center;
+}
+
+#edge-popUp {
+	display: none;
+	position: absolute;
+	top: 350px;
+	left: 170px;
+	z-index: 299;
+	width: 250px;
+	height: 90px;
+	background-color: #f9f9f9;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #5394ed;
+	padding: 10px;
+	text-align: center;
+}
+
+.imgContainer {
+	align-content: center;
+	width: 100%;
+}
+
+.largeimage {
+		width: 100%;
+    padding-left: 80px;
+    margin: 0 auto;
+}
+
+.generateDisplayImage,
+.generateMiniDisplayImage {
+	width: 90%;
+	height: inherit;
+}
+
+.generateButton {
+	margin: 10px 0px 0px 10px;
+	line-height: 25px;
+	font-size: 12px;
+	font-family: verdana;
+	cursor: pointer;
+	border-radius: 15px;
+	color: white;
+	background-color: #04AA6D;
+	border-color: #4ba530;
+}
+
+.loadingImgCopy {
+	display: inline-block;
+	margin-left: 250px;
+}
+
+.containerCheckmark {
+	display: inline-flex;
+	justify-content: center;
+	width: 45em;
+}
+
+
+/* LOADER */
+.checkmark svg{
+	/* width: 300px;
+  margin: 0 auto;
+  padding-top: 40px; */
+	width: 2em;
+	margin-left: 10px;
+}
+
+/* Large display 1 */
+.path0 {
+	stroke-dasharray: 300;
+	stroke-dashoffset: 0;
+	-webkit-animation-name: load, spin;
+	-webkit-animation-duration: 3s, 3s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	animation-name: load, spin;
+	animation-duration: 3s, 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.check0 {
+	stroke-dasharray: 110;
+	stroke-dashoffset: -110;
+	stroke-width: 0;
+}
+.fill0 {
+	stroke-dasharray: 285;
+	stroke-dashoffset: -257;
+	-webkit-animation: spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards;
+	animation: spin-fill 3s cubic-bezier(0.700, 0.465, 0.120, 0.600) infinite forwards;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.path-complete0 {
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+.fill-complete0 {
+	-webkit-animation: fill 1s ease-out forwards;
+	animation: fill 1s ease-out forwards;
+}
+.check-complete0 {
+	-webkit-animation: check 1s ease-in forwards;
+	animation: check 1s ease-in forwards;
+	stroke-width: 15;
+	stroke-dashoffset: 0;
+}
+
+/* Mini display 1 */
+.path1 {
+	stroke-dasharray: 300;
+	stroke-dashoffset: 0;
+	-webkit-animation-name: load, spin;
+	-webkit-animation-duration: 3s, 3s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	animation-name: load, spin;
+	animation-duration: 3s, 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.check1 {
+	stroke-dasharray: 110;
+	stroke-dashoffset: -110;
+	stroke-width: 0;
+}
+.fill1 {
+	stroke-dasharray: 285;
+	stroke-dashoffset: -257;
+	-webkit-animation: spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards;
+	animation: spin-fill 3s cubic-bezier(0.700, 0.465, 0.120, 0.600) infinite forwards;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.path-complete1 {
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+.fill-complete1 {
+	-webkit-animation: fill 1s ease-out forwards;
+	animation: fill 1s ease-out forwards;
+}
+.check-complete1 {
+	-webkit-animation: check 1s ease-in forwards;
+	animation: check 1s ease-in forwards;
+	stroke-width: 15;
+	stroke-dashoffset: 0;
+}
+
+/* Mini display 2 */
+.path2 {
+	stroke-dasharray: 300;
+	stroke-dashoffset: 0;
+	-webkit-animation-name: load, spin;
+	-webkit-animation-duration: 3s, 3s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	animation-name: load, spin;
+	animation-duration: 3s, 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.check2 {
+	stroke-dasharray: 110;
+	stroke-dashoffset: -110;
+	stroke-width: 0;
+}
+.fill2 {
+	stroke-dasharray: 285;
+	stroke-dashoffset: -257;
+	-webkit-animation: spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards;
+	animation: spin-fill 3s cubic-bezier(0.700, 0.465, 0.120, 0.600) infinite forwards;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.path-complete2 {
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+.fill-complete2 {
+	-webkit-animation: fill 1s ease-out forwards;
+	animation: fill 1s ease-out forwards;
+}
+.check-complete2 {
+	-webkit-animation: check 1s ease-in forwards;
+	animation: check 1s ease-in forwards;
+	stroke-width: 15;
+	stroke-dashoffset: 0;
+}
+
+/* Mini display 3 */
+.path3 {
+	stroke-dasharray: 300;
+	stroke-dashoffset: 0;
+	-webkit-animation-name: load, spin;
+	-webkit-animation-duration: 3s, 3s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	animation-name: load, spin;
+	animation-duration: 3s, 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.check3 {
+	stroke-dasharray: 110;
+	stroke-dashoffset: -110;
+	stroke-width: 0;
+}
+.fill3 {
+	stroke-dasharray: 285;
+	stroke-dashoffset: -257;
+	-webkit-animation: spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards;
+	animation: spin-fill 3s cubic-bezier(0.700, 0.465, 0.120, 0.600) infinite forwards;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.path-complete3 {
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+.fill-complete3 {
+	-webkit-animation: fill 1s ease-out forwards;
+	animation: fill 1s ease-out forwards;
+}
+.check-complete3 {
+	-webkit-animation: check 1s ease-in forwards;
+	animation: check 1s ease-in forwards;
+	stroke-width: 15;
+	stroke-dashoffset: 0;
+}
+
+/* Mini display 4 */
+.path4 {
+	stroke-dasharray: 300;
+	stroke-dashoffset: 0;
+	-webkit-animation-name: load, spin;
+	-webkit-animation-duration: 3s, 3s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	animation-name: load, spin;
+	animation-duration: 3s, 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.check4 {
+	stroke-dasharray: 110;
+	stroke-dashoffset: -110;
+	stroke-width: 0;
+}
+.fill4 {
+	stroke-dasharray: 285;
+	stroke-dashoffset: -257;
+	-webkit-animation: spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards;
+	animation: spin-fill 3s cubic-bezier(0.700, 0.465, 0.120, 0.600) infinite forwards;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.path-complete4 {
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+.fill-complete4 {
+	-webkit-animation: fill 1s ease-out forwards;
+	animation: fill 1s ease-out forwards;
+}
+.check-complete4 {
+	-webkit-animation: check 1s ease-in forwards;
+	animation: check 1s ease-in forwards;
+	stroke-width: 15;
+	stroke-dashoffset: 0;
+}
+
+/* Mini display 5 */
+.path5 {
+	stroke-dasharray: 300;
+	stroke-dashoffset: 0;
+	-webkit-animation-name: load, spin;
+	-webkit-animation-duration: 3s, 3s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	animation-name: load, spin;
+	animation-duration: 3s, 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.check5 {
+	stroke-dasharray: 110;
+	stroke-dashoffset: -110;
+	stroke-width: 0;
+}
+.fill5 {
+	stroke-dasharray: 285;
+	stroke-dashoffset: -257;
+	-webkit-animation: spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards;
+	animation: spin-fill 3s cubic-bezier(0.700, 0.465, 0.120, 0.600) infinite forwards;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50px 50px;
+}
+.path-complete5 {
+	-webkit-animation-play-state: paused;
+	animation-play-state: paused;
+}
+.fill-complete5 {
+	-webkit-animation: fill 1s ease-out forwards;
+	animation: fill 1s ease-out forwards;
+}
+.check-complete5 {
+	-webkit-animation: check 1s ease-in forwards;
+	animation: check 1s ease-in forwards;
+	stroke-width: 15;
+	stroke-dashoffset: 0;
+}
+
+@-webkit-keyframes load {
+	0% {
+		stroke-dashoffset: 300;
+		-webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+	}
+	50% {
+		stroke-dashoffset: 0;
+		-webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	}
+	100% {
+		stroke-dashoffset: -300;
+	}
+}
+
+@keyframes load {
+	0% {
+		stroke-dashoffset: 285;
+		animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+	}
+	50% {
+		stroke-dashoffset: 0;
+		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	}
+	100% {
+		stroke-dashoffset: -285;
+	}
+}
+
+@-webkit-keyframes check {
+	0% {
+		stroke-dashoffset: -110;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes check {
+	0% {
+		stroke-dashoffset: -110;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes spin-fill {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(720deg);
+	}
+}
+
+@keyframes spin-fill {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(720deg);
+	}
+}
+
+@-webkit-keyframes fill {
+	0% {
+		stroke-dashoffset: 285;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes fill {
+	0% {
+		stroke-dashoffset: 285;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+.success {
+	stroke: #009900;
+	transition: stroke .6s;
+}
+
+/* Dropdown menu */
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+}
+/*#topmenu{
+  width: 1440px;
+  height: 40px;
+}*/
+#menu {
+  height: 30px;
+  width: 570px;
+  margin-left: 3px;
+}
+#logos {
+	margin-right: 10px;
+}
+#title {
+	margin-right: 10px;
+}
+
+img {
+	margin-top: 5px;
+}
+.dropdown-content {
+  float:right;
+  background-color: #f1f1f1;
+  min-width: 138;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  float:left;
+  color: black;
+  padding: 8px 0px;
+  text-decoration: none;
+  display: block;
+  background:none;
+  border:none;
+  width: 138px;
+}
+.dropdown-content button:hover {
+	background-color: #ddd;
+	text-decoration: underline;
+	color: #0000A0;
+	text-decoration-color: #0000A0;
+}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}

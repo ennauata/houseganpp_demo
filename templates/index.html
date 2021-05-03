@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Add JS/CSS -->
+   <head>
+      <meta charset="utf-8" />
+      <link rel="icon" type="image/png" href="static/favicon.ico" />
+      <title>House-GAN++</title>
+      <link rel="stylesheet" href="static/css/graph.css">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://unpkg.com/alea@1.0.0/alea.js"></script>
+      <script type="text/javascript" src="static/js/exampleUtil.js"></script>
+      <script type="text/javascript" src="static/js/graph.js"></script>
+      <!-- <script type="text/javascript" "src="/js/socket.io/socket.io.js"></script> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-V16PP2JZ33"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V16PP2JZ33');
+      </script>
+   </head>
+   <!-- Start demo -->
+   <!-- onload="init();" -->
+   <body>
+
+      <div id="topmenu">
+        <!-- dropdown menu -->
+        <div id="menu" class="dropdown">
+          <button class="dropbtn">Predefined Layouts</button>
+          <div class="dropdown-content">
+            <button id="0" onclick="setTemplate(this.id)">Studio</button>
+            <button id="1" onclick="setTemplate(this.id)">2-Bedroom suite</button>
+            <button id="2" onclick="setTemplate(this.id)">3-Bedroom suite</button>
+          </div>
+        </div>
+        <div id="logos" "margin-top:="" 5px;"=""><img src="static/logos.png" height="30px"></div>
+        <div id="title"><h4>House-GAN++ (CVPR 2021)</h4></div>
+      </div>
+        
+      <!-- Node menu -->
+      <div id="node-popUp">
+         <span id="node-operation">node</span>
+         <br />
+         <table>
+            <td>label</td>
+            <td>
+               <input id="node-label" value="new value" />
+            </td>
+         </table>
+         <input type="button" value="save" id="node-saveButton" />
+         <input type="button" value="cancel" id="node-cancelButton" />
+      </div>
+      <!-- Edge menu -->
+      <div id="edge-popUp">
+         <span id="edge-operation">edge</span>
+      </div>
+      <br />
+      <div id="container_screen">
+         <!-- Canvas -->
+         <div id="mynetwork"></div>
+         <!-- display -->
+         <div id="display">
+            <!-- generate Button -->
+            <input type="button" class="generateButton" value="More Examples" id="node-generateButton" onclick="generate()" />
+            <!-- checkmark -->
+            <div class="containerCheckmark">
+               <p id=progress></p>
+               <div class="checkmark">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px"
+                     viewBox="0, 0, 100, 100" id="checkmark">
+                     <g transform="">
+                        <circle class="path0" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <circle class="fill0" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <polyline class="check0" fill="none" stroke="#7DB0D5" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10"
+                           points="70,35 45,65 30,52  "/>
+                     </g>
+                  </svg>
+               </div>
+            </div>
+              <!-- large image -->
+              <div class="largeimgContainer" id="lgContainer" class="imgContainer largeimage"></div>
+
+         </div>
+         <!-- mini display -->
+         <div id="mini_display">
+            <div class="imgContainer">
+
+               <!-- display 1 -->
+               <div class="smdisplay" style="margin-top: 5px;">
+                 <div class="checkmark" style="position:absolute; top: 0.1%; right: 0; z-index: 2; margin-top: 5px; margin-right: 5px;">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px"
+                     viewBox="0, 0, 100, 100" id="checkmark">
+                     <g transform="">
+                        <circle class="path1" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <circle class="fill1" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <polyline class="check1" fill="none" stroke="#7DB0D5" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10"
+                           points="70,35 45,65 30,52  "/>
+                     </g>
+                  </svg>
+                 </div style="position:relative; z-index: 1;">
+                 <div id="sm_img_0" class="generateDisplayImage"></div>
+               </div>
+
+              <!-- display 2 -->
+               <div class="smdisplay" style="margin-top: 5px;">
+                 <div class="checkmark" style="position:absolute; top: 19.6%; right: 0; z-index: 2; margin-top: 5px; margin-right: 5px;">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px"
+                     viewBox="0, 0, 100, 100" id="checkmark">
+                     <g transform="">
+                        <circle class="path2" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <circle class="fill2" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <polyline class="check2" fill="none" stroke="#7DB0D5" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10"
+                           points="70,35 45,65 30,52  "/>
+                     </g>
+                  </svg>
+                 </div style="position:relative; z-index: 1;">
+                 <div id="sm_img_1" class="generateDisplayImage"></div>
+               </div>
+
+              <!-- display 3 -->
+               <div class="smdisplay" style="margin-top: 5px;">
+                 <div class="checkmark" style="position:absolute; top: 39%; right: 0; z-index: 2; margin-top: 5px; margin-right: 5px;">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px"
+                     viewBox="0, 0, 100, 100" id="checkmark">
+                     <g transform="">
+                        <circle class="path3" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <circle class="fill3" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <polyline class="check3" fill="none" stroke="#7DB0D5" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10"
+                           points="70,35 45,65 30,52  "/>
+                     </g>
+                  </svg>
+                 </div style="position:relative; z-index: 1;">
+                 <div id="sm_img_2" class="generateDisplayImage"></div>
+               </div>
+
+              <!-- display 4 -->
+               <div class="smdisplay" style="margin-top: 5px;">
+                 <div class="checkmark" style="position:absolute; top: 58.7%; right: 0; z-index: 2; margin-top: 5px; margin-right: 5px;">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px"
+                     viewBox="0, 0, 100, 100" id="checkmark">
+                     <g transform="">
+                        <circle class="path4" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <circle class="fill4" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <polyline class="check4" fill="none" stroke="#7DB0D5" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10"
+                           points="70,35 45,65 30,52  "/>
+                     </g>
+                  </svg>
+                 </div style="position:relative; z-index: 1;">
+                 <div id="sm_img_3" class="generateDisplayImage"></div>
+               </div>
+
+              <!-- display 5 -->
+               <div class="smdisplay" style="margin-top: 5px;">
+                 <div class="checkmark" style="position:absolute; top: 78.2%; right: 0; z-index: 2; margin-top: 5px; margin-right: 5px;">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px" y="0px"
+                     viewBox="0, 0, 100, 100" id="checkmark">
+                     <g transform="">
+                        <circle class="path5" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <circle class="fill5" fill="none" stroke="#7DB0D5" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44"/>
+                        <polyline class="check5" fill="none" stroke="#7DB0D5" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10"
+                           points="70,35 45,65 30,52  "/>
+                     </g>
+                  </svg>
+                 </div style="position:relative; z-index: 1;">
+                 <div id="sm_img_4" class="generateDisplayImage"></div>
+               </div>
+
+            </div>
+         </div>
+      </div>
+      <Center>Project <a href="https://ennauata.github.io/houseganpp/page.html">website</a>. Contact: <a href="http://www.sfu.ca/~nnauata/">Nelson Nauata</a>.</p></center>
+   </body>
+</html>
