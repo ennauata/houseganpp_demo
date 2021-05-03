@@ -6,7 +6,7 @@ var room_to_color = {"living": '#EE4D4D', "kitchen": '#C67C7B', "bedroom": '#FFD
                      "bathroom": '#BEBEBE', "balcony": '#BFE3E8', "entrance": '#7BA779',
                      "dining": '#E87A90', "study": '#FF8C69', "storage": '#1F849B'};
 
-// Template - Studio
+// Template - 1-Bedroom
 var template_nodes_1 = [
   { id: 0, label: "bedroom", color: '#FFD274'},
   { id: 1, label: "bathroom", color: '#BEBEBE'},
@@ -37,7 +37,7 @@ var template_nodes_2 = [
 
 var template_edges_2 = [
   { from: 5, to: 1 , color: '#D3A2C7', width: 3},
-  { from: 5, to: 2 , color: '#D3A2C7', width: 3},
+  { from: 5, to: 0 , color: '#D3A2C7', width: 3},
   { from: 5, to: 3 , color: '#D3A2C7', width: 3},
   { from: 5, to: 4 , color: '#D3A2C7', width: 3},
   { from: 'outside', to: 5 , color: '#D3A2C7', width: 3},
@@ -65,8 +65,6 @@ var template_edges_3 = [
   { from: 6, to: 1 , color: '#D3A2C7', width: 3},
   { from: 6, to: 2 , color: '#D3A2C7', width: 3},
   { from: 6, to: 3 , color: '#D3A2C7', width: 3},
-  { from: 0, to: 3 , color: '#D3A2C7', width: 3},
-  { from: 1, to: 3 , color: '#D3A2C7', width: 3},
   { from: 6, to: 5 , color: '#D3A2C7', width: 3},
   { from: 'outside', to: 6 , color: '#D3A2C7', width: 3},
   { from: 8, to: 2 , color: '#D3A2C7', width: 3},

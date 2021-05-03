@@ -18,5 +18,5 @@ def generate():
 	graph_str = request.data.decode('utf-8')
 	graph_data = json.loads(graph_str)
 	return Response(run_model(graph_data), mimetype='text/plain')
-#serve(app, host='127.0.0.1', port=5000)
+# serve(app, host='127.0.0.1', port=5000)
 serve(app, host='0.0.0.0', port=80)
